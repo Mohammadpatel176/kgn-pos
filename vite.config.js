@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 const require = createRequire(import.meta.url)
 
 export default defineConfig({
+  base: '/kgn-pos/',
   plugins: [
     preact({
       babel: {
