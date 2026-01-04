@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import preact from '@preact/preset-vite'
 import tailwindcss from '@tailwindcss/vite'
 
-const require = createRequire(import.meta.url);
+const require = createRequire(import.meta.url)
 
 export default defineConfig({
   plugins: [
@@ -14,12 +14,27 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
+
   resolve: {
     alias: {
-      'react': 'preact/compat',
+      react: 'preact/compat',
       'react-dom/test-utils': 'preact/test-utils',
       'react-dom': 'preact/compat',
       'react/jsx-runtime': 'preact/jsx-runtime',
     },
   },
+
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: 'esbuild',
+    cssCodeSplit: true,
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 500
+  },
+
+  preview: {
+    port: 4173,
+    strictPort: true
+  }
 })
