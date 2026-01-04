@@ -1,0 +1,367 @@
+[
+  {
+    "productid":1,
+    "productName": "Compact Frame",
+    "productPrice": 1350.00,
+    "productImageUrl": "/Images/Compect_Fram_Final.png",
+    "productDescription": "High-quality compact frame for auto rickshaws."
+  },
+  {
+    "productid":2,
+    "productName": "Back Door",
+    "productPrice": 950.00,
+    "productImageUrl": "/Images/Dore_Final.png",
+    "productDescription": "Durable metal back door for cargo space."
+  },
+  {
+    "productid":3,
+    "productName": "Compact Floor 18",
+    "productPrice": 1200.00,
+    "productImageUrl": "/Images/Flooring_14.png",
+    "productDescription": "18-gauge heavy-duty flooring sheet."
+  },
+  {
+    "productid":4,
+    "productName": "Compact Floor 14",
+    "productPrice": 1350.00,
+    "productImageUrl": "/Images/flooring_18.png",
+    "productDescription": "14-gauge premium flooring sheet."
+  },
+  {
+    "productid":5,
+    "productName": "Half Star",
+    "productPrice": 100.00,
+    "productImageUrl": "/Images/Samosa_final.png",
+    "productDescription": "Samosa style bracket support."
+  },
+  {
+    "productid":6,
+    "productName": "Alfa Floor",
+    "productPrice": 1300.00,
+    "productImageUrl": "/Images/side darvaja.png",
+    "productDescription": "Specialized flooring for Alfa models."
+  },
+  {
+    "productid":1,
+    "productName": "Y Support",
+    "productPrice": 250.00,
+    "productImageUrl": "/Images/test_new.png",
+    "productDescription": "Reinforced Y-shaped structural support."
+  },
+  {
+    "productid": 1,
+    "productName": "Compact Frame",
+    "productPrice": 1350.0,
+    "productImageUrl": "/Images/Compect_Fram_Final.png",
+    "productDescription": "High-quality compact frame for auto rickshaws."
+  },
+  {
+    "productid": 2,
+    "productName": "Back Door",
+    "productPrice": 950.0,
+    "productImageUrl": "/Images/Dore_Final.png",
+    "productDescription": "Durable metal back door for cargo space."
+  },
+  {
+    "productid": 3,
+    "productName": "Compact Floor 18",
+    "productPrice": 1200.0,
+    "productImageUrl": "/Images/Flooring_14.png",
+    "productDescription": "18-gauge heavy-duty flooring sheet."
+  },
+  {
+    "productid": 4,
+    "productName": "Compact Floor 14",
+    "productPrice": 1350.0,
+    "productImageUrl": "/Images/flooring_18.png",
+    "productDescription": "14-gauge premium flooring sheet."
+  },
+  {
+    "productid": 5,
+    "productName": "Half Star",
+    "productPrice": 100.0,
+    "productImageUrl": "/Images/Samosa_final.png",
+    "productDescription": "Samosa style bracket support."
+  },
+  {
+    "productid": 6,
+    "productName": "Alfa Floor",
+    "productPrice": 1300.0,
+    "productImageUrl": "/Images/side_darvaja.png",
+    "productDescription": "Specialized flooring for Alfa models."
+  },
+  {
+    "productid": 7,
+    "productName": "Y Support",
+    "productPrice": 250.0,
+    "productImageUrl": "/Images/test_new.png",
+    "productDescription": "Reinforced Y-shaped structural support."
+  },
+
+  {
+    "productid": 8,
+    "productName": "GLASS FRAME PASSENGER",
+    "productPrice": 0,
+    "productImageUrl": "/Images/GlassFrame_Pecenger.png",
+    "productDescription": "Glass frame for passenger auto rickshaw."
+  },
+  {
+    "productid": 9,
+    "productName": "GLASS FRAME LOADING",
+    "productPrice": 0,
+    "productImageUrl": "/Images/Glass_frame_loading.png",
+    "productDescription": "Glass frame for loading auto rickshaw."
+  },
+  {
+    "productid": 10,
+    "productName": "FRONT FLOORING",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FrontFlooring.png",
+    "productDescription": "Front flooring sheet."
+  },
+  {
+    "productid": 11,
+    "productName": "FRONT DERA",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FrontDera.png",
+    "productDescription": "Front dera body component."
+  },
+  {
+    "productid": 12,
+    "productName": "BODY PASSENGER OLD",
+    "productPrice": 0,
+    "productImageUrl": "/Images/BodyPacengerOld.png",
+    "productDescription": "Old model passenger body."
+  },
+  {
+    "productid": 13,
+    "productName": "DELUX PASSENGER BODY",
+    "productPrice": 0,
+    "productImageUrl": "/Images/DeluxPacengerBody.png",
+    "productDescription": "Deluxe passenger body."
+  },
+  {
+    "productid": 14,
+    "productName": "COMPLETE TROLLEY O/M",
+    "productPrice": 0,
+    "productImageUrl": "/Images/CompleteTrolyOM.png",
+    "productDescription": "Complete trolley old model."
+  },
+  {
+    "productid": 15,
+    "productName": "X.L.D TROLLEY GREEN",
+    "productPrice": 0,
+    "productImageUrl": "/Images/XLDTrollyGreen.png",
+    "productDescription": "XLD trolley painted green."
+  },
+  {
+    "productid": 16,
+    "productName": "X.L.D TROLLEY YELLOW",
+    "productPrice": 0,
+    "productImageUrl": "/Images/XLDTrollyYellow.png",
+    "productDescription": "XLD trolley painted yellow."
+  },
+  {
+    "productid": 17,
+    "productName": "X.L.D TROLLEY RED",
+    "productPrice": 0,
+    "productImageUrl": "/Images/XLDTrollyRed.png",
+    "productDescription": "XLD trolley painted red."
+  },
+  {
+    "productid": 18,
+    "productName": "TROLLEY X.L.D N/M",
+    "productPrice": 0,
+    "productImageUrl": "/Images/XLDTrollyXM.png",
+    "productDescription": "XLD trolley new model."
+  },
+  {
+    "productid": 19,
+    "productName": "CITY GLASS FRAME",
+    "productPrice": 0,
+    "productImageUrl": "/Images/ApeCityGlassFrame.png",
+    "productDescription": "City model glass frame."
+  },
+  {
+    "productid": 20,
+    "productName": "TROLLEY FLOORING WITH CHANNEL",
+    "productPrice": 0,
+    "productImageUrl": "/Images/TrollyFlooringWithChenal.png",
+    "productDescription": "Trolley flooring with support channel."
+  },
+  {
+    "productid": 21,
+    "productName": "TROLLEY FLOORING",
+    "productPrice": 0,
+    "productImageUrl": "/Images/TrollyFlooring.png",
+    "productDescription": "Standard trolley flooring."
+  },
+  {
+    "productid": 22,
+    "productName": "LD TROLLEY FLOORING",
+    "productPrice": 0,
+    "productImageUrl": "/Images/LDTrollyFlooring.png",
+    "productDescription": "Loading trolley flooring."
+  },
+  {
+    "productid": 23,
+    "productName": "PASSENGER CENTER FLOORING",
+    "productPrice": 0,
+    "productImageUrl": "/Images/PessCenterFlooring.png",
+    "productDescription": "Passenger center flooring."
+  },
+  {
+    "productid": 24,
+    "productName": "ENGINE BONNET",
+    "productPrice": 0,
+    "productImageUrl": "/Images/EngenBonnat.png",
+    "productDescription": "Engine bonnet cover."
+  },
+  {
+    "productid": 25,
+    "productName": "REAR TAILGATE PASSENGER",
+    "productPrice": 0,
+    "productImageUrl": "/Images/RtelgetPec.png",
+    "productDescription": "Passenger rear tailgate."
+  },
+  {
+    "productid": 26,
+    "productName": "DRIVER PARTITION (TAKA)",
+    "productPrice": 0,
+    "productImageUrl": "/Images/DrivPartation.png",
+    "productDescription": "Driver partition panel."
+  },
+  {
+    "productid": 27,
+    "productName": "FRONT FALKA LOADING",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FrntFalkaLod.png",
+    "productDescription": "Front falka for loading body."
+  },
+  {
+    "productid": 28,
+    "productName": "SIDE FALKA LOADING",
+    "productPrice": 0,
+    "productImageUrl": "/Images/SideFalkaLod.png",
+    "productDescription": "Side falka for loading body."
+  },
+  {
+    "productid": 29,
+    "productName": "SIDE PANEL PASSENGER",
+    "productPrice": 0,
+    "productImageUrl": "/Images/SidePanelPecg.png",
+    "productDescription": "Passenger side panel."
+  },
+  {
+    "productid": 30,
+    "productName": "TOP",
+    "productPrice": 0,
+    "productImageUrl": "/Images/Top.png",
+    "productDescription": "Vehicle top body part."
+  },
+  {
+    "productid": 31,
+    "productName": "DIESEL TANK PATARA",
+    "productPrice": 0,
+    "productImageUrl": "/Images/DesialTankPatra.png",
+    "productDescription": "Diesel tank protection patara."
+  },
+  {
+    "productid": 32,
+    "productName": "FRONT CONA BIG PASSENGER",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FrontConeBigPecg.png",
+    "productDescription": "Front big cona passenger."
+  },
+  {
+    "productid": 33,
+    "productName": "REAR CONA SMALL PASSENGER",
+    "productPrice": 0,
+    "productImageUrl": "/Images/RearConeSmallPecg.png",
+    "productDescription": "Rear small cona passenger."
+  },
+  {
+    "productid": 34,
+    "productName": "FOOT REST",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FootRest.png",
+    "productDescription": "Foot rest support."
+  },
+  {
+    "productid": 35,
+    "productName": "TEKA",
+    "productPrice": 0,
+    "productImageUrl": "/Images/Teka.png",
+    "productDescription": "Structural teka support."
+  },
+  {
+    "productid": 36,
+    "productName": "COMPLETE DOOR",
+    "productPrice": 0,
+    "productImageUrl": "/Images/CompectDore.png",
+    "productDescription": "Complete side door."
+  },
+  {
+    "productid": 37,
+    "productName": "FRONT MUDGUARD",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FrontMudgart.png",
+    "productDescription": "Front mudguard."
+  },
+  {
+    "productid": 38,
+    "productName": "FRONT FLOORING CORNER SAMOSA",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FrontFloringRearCorner.png",
+    "productDescription": "Front flooring corner samosa."
+  },
+  {
+    "productid": 39,
+    "productName": "FRONT FLOORING REAR CONA",
+    "productPrice": 0,
+    "productImageUrl": "/Images/FrontFloringRearCorner.png",
+    "productDescription": "Front flooring rear cona."
+  },
+  {
+    "productid": 40,
+    "productName": "TEKA PILLAR",
+    "productPrice": 0,
+    "productImageUrl": "/Images/TekaPiller.png",
+    "productDescription": "Teka pillar support."
+  },
+  {
+    "productid": 41,
+    "productName": "DERA SUPPORT",
+    "productPrice": 0,
+    "productImageUrl": "/Images/DearSupport.png",
+    "productDescription": "Dera body support."
+  },
+  {
+    "productid": 42,
+    "productName": "MIRROR CLAMP",
+    "productPrice": 0,
+    "productImageUrl": "/Images/MirrorClamp.png",
+    "productDescription": "Mirror clamp holder."
+  },
+  {
+    "productid": 43,
+    "productName": "SIDE MUDGUARD",
+    "productPrice": 0,
+    "productImageUrl": "/Images/SideMudgard.png",
+    "productDescription": "Side mudguard."
+  },
+  {
+    "productid": 44,
+    "productName": "HOOD PIPE",
+    "productPrice": 0,
+    "productImageUrl": "/Images/HoodPipe.png",
+    "productDescription": "Hood pipe support."
+  },
+  {
+    "productid": 45,
+    "productName": "REAR GUARD",
+    "productPrice": 0,
+    "productImageUrl": "/Images/RearGuard.png",
+    "productDescription": "Rear safety guard."
+  }
+]
