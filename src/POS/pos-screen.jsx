@@ -3,7 +3,7 @@ import itemData from "../Data/itemDetails.json";
 import ItemCard from "./item-card-pos";
 import CheckoutModal from "./checkout-popup";
 import { generateInvoice } from "./generateInvoice";
-
+import { notifySuccess, notifyError,notifyInfo,notifyWarning   } from "../NotificationService/notify";
 function POSScreen() {
   const [items] = useState(itemData);
   const [cart, setCart] = useState([]);
@@ -38,6 +38,7 @@ function POSScreen() {
       }
       return [...prev, { ...product, quantity: 1 }];
     });
+    notifySuccess(`${product.productName} added to cart!`);
   };
 
   const updateQuantity = (id, delta) => {
@@ -48,10 +49,13 @@ function POSScreen() {
           : p
       )
     );
+    notifySuccess(`${product.productName} quantity updated!`);
   };
 
-  const removeFromCart = (id) =>
+  const removeFromCart = (id) =>{
     setCart(cart.filter((p) => p.productid !== id));
+    notifyInfo("Item removed from cart!");
+  }
 
   const subtotal = cart.reduce(
     (s, i) => s + i.productPrice * i.quantity,
@@ -80,6 +84,7 @@ function POSScreen() {
     setCart([]);
     setDiscountValue(0);
     setIsModalOpen(false);
+    notifySuccess("Invoice generated successfully!");
   };
 
   return (

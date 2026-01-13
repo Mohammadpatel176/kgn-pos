@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import itemData from "../Data/itemDetails.json";
-
+import { notifySuccess,notifyError,notifyInfo,notifyWarning } from '../NotificationService/notify';
 // --- CUSTOM CALENDAR COMPONENT ---
 function GreenDatePicker({ selectedDate, onDateChange }) {
   const [show, setShow] = useState(false);
@@ -88,10 +88,15 @@ export default function PurchaseOrder() {
   const tax = subtotal * 0.18;
   const grandTotal = subtotal + tax;
 
-  const addItem = () => setItems([...items, { id: Date.now(), name: '', qty: 1, price: 0, total: 0 }]);
-  
-  const removeItem = (id) => items.length > 1 && setItems(items.filter(item => item.id !== id));
+  const addItem = () =>{
+   setItems([...items, { id: Date.now(), name: '', qty: 1, price: 0, total: 0 }]);
+    notifySuccess('New item added to the order!');
+  };
+  const removeItem = (id) =>{
 
+  items.length > 1 && setItems(items.filter(item => item.id !== id));
+    notifyInfo("Item removed from the order!");
+  };
   const updateItem = (id, field, value) => {
     const newItems = items.map(item => {
       if (item.id === id) {

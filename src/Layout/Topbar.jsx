@@ -20,7 +20,7 @@ export default function Topbar() {
         />
 
         {open && (
-          <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-md">
+          <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-md z-200">
             <button className="block w-full px-4 py-2 text-left hover:bg-gray-100">
               My Profile
             </button>
