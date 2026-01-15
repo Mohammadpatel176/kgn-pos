@@ -9,6 +9,9 @@ import {
   PlusCircleIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
+
+// Notification service
+import {notifySuccess,notifyError,notifyInfo,notifyWarning} from '../../NotificationService/notify.jsx';
 export default function ItemMasterList() {
   const [items, setItems] = useState([]);
 
@@ -52,10 +55,44 @@ export default function ItemMasterList() {
   };
 
   const handleSave = (newItem) => {
-    // Logic to save the new item
-    setItems(prevItems => [...prevItems, newItem]);
+    let itemName='';
+    if(newItem && newItem.productName){
+      itemName=newItem.productName;
+    }else{
+      itemName='Item';
+    }
+    setItems((prevItems) => {
+      // Check if item already exists
+      const existingIndex = prevItems.findIndex(
+        (item) => item.productid === newItem.id
+      );
+
+      if (existingIndex !== -1) {
+        // Update existing item
+        const updatedItems = [...prevItems];
+        updatedItems[existingIndex] = {
+          ...updatedItems[existingIndex],
+          ...newItem, // merge new data
+          productid: newItem.id, // ensure id stays correct
+        };
+        return updatedItems;
+      } else {
+        // Add new item
+        return [
+          ...prevItems,
+          {
+            ...newItem,
+            productid: newItem.id ?? Date.now(), // generate id if not provided
+            productCode: newItem.productCode ?? `PRD00${newItem.id ?? Date.now()}`,
+          },
+        ];
+      }
+    });
+
     closeModal();
+    notifySuccess("Item saved successfully!");
   };
+
 
   const formatPrice = (value) => {
     const num = Number(value);
@@ -140,7 +177,7 @@ export default function ItemMasterList() {
                       </button>
 
                       {/* Tooltip */}
-                       <Tooltip anchorId={`delete-btn-${item.productId_index}`} content="Delete" place="top" />
+                      <Tooltip anchorId={`delete-btn-${item.productId_index}`} content="Delete" place="top" />
                     </div>
 
                   </div>

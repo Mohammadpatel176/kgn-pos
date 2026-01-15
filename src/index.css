@@ -1,7 +1,6 @@
 @import "tailwindcss";
 .input {
-  @apply w-full rounded-md border border-gray-300 px-3 py-2 text-sm
-    focus:outline-none focus:ring-1 focus:ring-green-700 focus:border-green-500;
+  @apply w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-green-500 outline-none;
 }
 
 .primary-button{
@@ -13,4 +12,18 @@
 
 .clear-button{
    @apply bg-red-500 text-white rounded-lg shadow-md hover:bg-red-700
+}
+.react-international-phone-input {
+  @apply w-full border border-gray-300 rounded-lg p-2 outline-none;
+}
+.react-international-phone-input-container{
+  @apply w-full focus:ring-2 focus:ring-green-500 outline-none;
+  
+}
+.react-international-phone-country-selector-button__button-content{
+  @apply m-2 p-1;
+}
+
+.main-table-header{
+  @apply sticky top-0 bg-green-700 z-10 rounded text-white;
 }

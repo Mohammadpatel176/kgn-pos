@@ -5,6 +5,8 @@ import POSScreen from "./POS/pos-screen";
 import PurchaseOrder from "./Purchase/purchase-order";
 import InventoryUpdate from "./Inventory/inventory-update";
 import ItemMasterList from "./Masters/ItemMaster/ItemMasterList";
+import SalesOrder from "./Sales/SalesOrder/sales-order";
+import SalesInvoice from "./Sales/SalesInvoice/sales-invoice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export function App() {
@@ -15,8 +17,8 @@ export function App() {
         <Route index element={<Dashboard />} />
         <Route path="sales/pos" element={<POSScreen />} />
         <Route path="master/itemMaster" element={<ItemMasterList />} />
-        <Route path="sales/order" element={<div>Sales Order</div>} />
-        <Route path="sales/invoice" element={<div>Sales Invoice</div>} />
+        <Route path="sales/order" element={<SalesOrder />} />
+        <Route path="sales/invoice" element={<SalesInvoice />} />
         <Route path="purchase/order" element={<PurchaseOrder/>} />
         <Route path="inventory/update" element={<InventoryUpdate />} />
         

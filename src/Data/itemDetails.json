@@ -42,55 +42,6 @@
     "productDescription": "Specialized flooring for Alfa models."
   },
   {
-    "productid":1,
-    "productName": "Y Support",
-    "productPrice": 250.00,
-    "productImageUrl": "/Images/test_new.png",
-    "productDescription": "Reinforced Y-shaped structural support."
-  },
-  {
-    "productid": 1,
-    "productName": "Compact Frame",
-    "productPrice": 1350.0,
-    "productImageUrl": "/Images/Compect_Fram_Final.png",
-    "productDescription": "High-quality compact frame for auto rickshaws."
-  },
-  {
-    "productid": 2,
-    "productName": "Back Door",
-    "productPrice": 950.0,
-    "productImageUrl": "/Images/Dore_Final.png",
-    "productDescription": "Durable metal back door for cargo space."
-  },
-  {
-    "productid": 3,
-    "productName": "Compact Floor 18",
-    "productPrice": 1200.0,
-    "productImageUrl": "/Images/Flooring_14.png",
-    "productDescription": "18-gauge heavy-duty flooring sheet."
-  },
-  {
-    "productid": 4,
-    "productName": "Compact Floor 14",
-    "productPrice": 1350.0,
-    "productImageUrl": "/Images/flooring_18.png",
-    "productDescription": "14-gauge premium flooring sheet."
-  },
-  {
-    "productid": 5,
-    "productName": "Half Star",
-    "productPrice": 100.0,
-    "productImageUrl": "/Images/Samosa_final.png",
-    "productDescription": "Samosa style bracket support."
-  },
-  {
-    "productid": 6,
-    "productName": "Alfa Floor",
-    "productPrice": 1300.0,
-    "productImageUrl": "/Images/side_darvaja.png",
-    "productDescription": "Specialized flooring for Alfa models."
-  },
-  {
     "productid": 7,
     "productName": "Y Support",
     "productPrice": 250.0,
