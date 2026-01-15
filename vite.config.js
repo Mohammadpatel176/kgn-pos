@@ -12,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
+  // Base path for GitHub Pages (repo name)
   base: "/kgn-pos/",
 
   plugins: [
@@ -25,9 +26,7 @@ export default defineConfig({
 
   resolve: {
     alias: {
-
       "@": path.resolve(__dirname, "./src"),
-
       react: "preact/compat",
       "react-dom/test-utils": "preact/test-utils",
       "react-dom": "preact/compat",
@@ -36,12 +35,17 @@ export default defineConfig({
   },
 
   build: {
-    outDir: "dist",
+    outDir: "dist/client", // separate folder for client build for GitHub Pages
     sourcemap: false,
     minify: "esbuild",
     cssCodeSplit: true,
     emptyOutDir: true,
     chunkSizeWarningLimit: 500,
+  },
+
+  server: {
+    port: 4173,
+    strictPort: true,
   },
 
   preview: {

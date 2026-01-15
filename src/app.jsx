@@ -4,7 +4,7 @@ import Dashboard from "./Home/home";
 import POSScreen from "./POS/pos-screen";
 import PurchaseOrder from "./Purchase/purchase-order";
 import InventoryUpdate from "./Inventory/inventory-update";
-import ItemMasterList from "./Masters/ItemMasterList";
+import ItemMasterList from "./Masters/ItemMaster/ItemMasterList";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export function App() {
