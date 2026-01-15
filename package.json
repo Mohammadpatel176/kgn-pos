@@ -4,12 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server",
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
-    "preview": "cross-env NODE_ENV=production node server",
-    "predeploy": "vite build --outDir dist/client",
+    "dev": "vite",
+    "build": "vite build --outDir dist/client",
+    "preview": "vite preview --port 4173",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/client"
   },
   "dependencies": {
