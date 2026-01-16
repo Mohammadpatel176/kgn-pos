@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useMemo } from 'react';
 import itemData from "../../Data/itemDetails.json";
 import { FaPlus, FaTrash, FaSave } from 'react-icons/fa';
 import { notifyInfo, notifySuccess, notifyWarning } from '../../NotificationService/notify.jsx';
@@ -7,29 +7,40 @@ import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 
 export default function SalesOrder() {
+    /* ---------------- CONSTANTS ---------------- */
+    const GST_RATE = 0.18;
+    const round = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
+    /* ---------------- STATES ---------------- */
     const [customer, setCustomer] = useState({ name: '' });
     const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
     const [deliveryDate, setDeliveryDate] = useState(new Date().toISOString().split('T')[0]);
     const [items, setItems] = useState([]);
     const [activeSearch, setActiveSearch] = useState({ rowId: null, results: [] });
     const [highlightIndex, setHighlightIndex] = useState(-1);
     const [advanceAmount, setAdvanceAmount] = useState(0);
-const [isConfirmed, setIsConfirmed] = useState(false);
+    const [isConfirmed, setIsConfirmed] = useState(false);
 
     useEffect(() => {
         setHighlightIndex(-1);
     }, [activeSearch]);
 
     /* ---------------- CALCULATIONS ---------------- */
-    const subtotal = items.reduce((acc, item) => acc + (item.qty * item.price), 0);
-    const tax = subtotal * 0.18;
-    const grandTotal = subtotal + tax;
-    const balanceAmount = Math.max(grandTotal - advanceAmount, 0);
+    const subtotal = useMemo(
+    () => items.reduce((acc, i) => acc + i.qty * i.price, 0),
+    [items]
+  );
+    const tax = useMemo(() => round(subtotal * GST_RATE), [subtotal]);
+  const grandTotal = useMemo(() => round(subtotal + tax), [subtotal, tax]);
+  const balanceAmount = Math.max(grandTotal - advanceAmount, 0);
 
     /* ---------------- ITEMS ---------------- */
     const addItem = () => {
-        setItems([...items, { id: Date.now(), name: '', qty: 0, price: 0, total: 0 }]);
-    };
+    setItems((prev) => [
+      ...prev,
+      { id: crypto.randomUUID(), name: "", qty: 0, price: 0 },
+    ]);
+  };
 
     const removeItem = (id) => {
         if (items.length > 1) {
@@ -83,14 +94,14 @@ const [isConfirmed, setIsConfirmed] = useState(false);
 
         items.forEach((item, i) => {
             msg += `*${i + 1}. ${item.name}*\n`;
-            msg += `   Qty: ${item.qty} × ₹${item.price.toLocaleString()} = ₹${item.total.toLocaleString()}\n`;
+            msg += `   Qty: ${item.qty} × ₹${item.price} = ₹${item.total}\n`;
             msg += `--------------------------------\n`;
         });
 
-        msg += `💰 *Subtotal:* ₹${subtotal.toLocaleString()}\n`;
-        msg += `🧾 *GST (18%):* ₹${tax.toLocaleString()}\n`;
-        msg += `💵 *Advance Paid:* ₹${advanceAmount.toLocaleString()}\n`;
-        msg += `🔔 *Balance Due:* ₹${balanceAmount.toLocaleString()}\n\n`;
+        msg += `💰 *Subtotal:* ₹${subtotal}\n`;
+        msg += `🧾 *GST (18%):* ₹${tax}\n`;
+        msg += `💵 *Advance Paid:* ₹${advanceAmount}\n`;
+        msg += `🔔 *Balance Due:* ₹${balanceAmount}\n\n`;
 
         msg += `📎 *Please find the Sales Order PDF attached.*\n\n`;
 
@@ -99,21 +110,42 @@ const [isConfirmed, setIsConfirmed] = useState(false);
         return encodeURIComponent(msg);
     };
 
-const handleSubmit = () => {
-    if (!isConfirmed) {
-        notifyWarning("Please confirm before sending the order!");
-        return;
+    const handleSubmit = () => {
+        if (!isConfirmed) {
+            notifyWarning("Please confirm before sending the order!");
+            return;
+        }
+
+        if (!items.length) return;
+
+        const message = generateWhatsAppMessage();
+        const phoneNumber =validatePhoneNumber (phone); 
+        // if (!phoneNumber) {
+        //     notifyWarning("Please enter a valid phone number.");
+        //     return;
+        // }
+        if(customer.name.trim()===""){
+            notifyWarning("Please enter customer name.");
+            return;
+        }
+        if(deliveryDate.trim()===""){
+            notifyWarning("Please select delivery date.");
+            return;
+        }
+        if(balanceAmount<=0){
+            notifyWarning("Balance amount should be greater than zero.");
+            return;
+        }
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappURL, "_blank");
+    };
+
+    function validatePhoneNumber(phone){
+        const phoneNumber = phone.replace(/\D/g, ""); // remove +, spaces
+        const phoneRegex = /^[1-9]\d{9}$/;
+        return phoneRegex.test(phoneNumber);
+
     }
-
-    if (!items.length) return;
-
-    const message = generateWhatsAppMessage();
-    const phoneNumber = phone.replace(/\D/g, ""); // remove +, spaces
-
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappURL, "_blank");
-};
-
 
     /* ---------------- UI ---------------- */
     return (
@@ -141,7 +173,17 @@ const handleSubmit = () => {
                     <GreenDatePicker selectedDate={deliveryDate} onDateChange={setDeliveryDate} />
                 </div>
             </div>
-
+            <div className='grid grid-cols-1'>
+                <div>
+                    <label className="text-xs font-bold text-gray-500 uppercase">Address</label>
+                    <textarea
+                        type="text"
+                        value={address.name}
+                        onChange={(e) => setAddress({ name: e.target.value })}
+                        className="w-full input p-3" rows={2}
+                    ></textarea>
+                </div>
+            </div>
             {/* TABLE */}
             <div >
                 <table className="w-full text-left rounded-xl text-sm table-auto">
@@ -209,7 +251,7 @@ const handleSubmit = () => {
                                     <input type="number" className="w-full p-2 text-right border border-gray-200 rounded font-mono" value={item.price} onChange={(e) => updateItem(item.id, 'price', parseFloat(e.target.value) || 0)} />
                                 </td>
 
-                                <td className="p-3 text-right font-bold text-gray-700 font-mono">₹{item.total.toLocaleString()}</td>
+                                <td className="p-3 text-right font-bold text-gray-700 font-mono">₹{item.total}</td>
 
                                 <td className="p-3 text-center">
                                     <button onClick={() => removeItem(item.id)} className="text-gray-400 hover:text-red-600 transition p-2"><FaTrash /></button>

@@ -1,0 +1,48 @@
+[{
+    "categoryId": 1,
+    "categoryCode": "ELEC",
+    "categoryName": "Electronics",
+    "description": "Electronic items including gadgets and appliances.",
+    "createdAt": "2023-01-15T10:00:00Z",
+    "updatedAt": "2024-05-20T15:30:00Z"
+  },
+  {
+     "categoryId": 2,
+    "categoryCode": "FASH",
+    "categoryName": "Fashion",
+    "description": "Clothing, footwear, and accessories.",
+    "createdAt": "2023-02-10T11:15:00Z",
+    "updatedAt": "2024-04-18T12:00:00Z"
+  },
+  {
+     "categoryId": 3,
+    "categoryCode": "HOME",
+    "categoryName": "Home & Living",
+    "description": "Furniture, decor, and household items.",
+    "createdAt": "2023-03-05T09:30:00Z",
+    "updatedAt": "2024-03-22T14:45:00Z"
+  },
+  {
+    "categoryId": 4,
+    "categoryCode": "SPORTS",
+    "categoryName": "Sports & Outdoors",
+    "description": "Sporting goods and outdoor equipment.",
+    "createdAt": "2023-04-12T13:20:00Z",
+    "updatedAt": "2024-02-28T16:10:00Z"
+  },
+  {
+        "categoryId": 5,
+    "categoryCode": "BEAUTY",
+    "categoryName": "Beauty & Personal Care",
+    "description": "Cosmetics, skincare, and personal hygiene products.",
+    "createdAt": "2023-05-18T15:40:00Z",
+    "updatedAt": "2024-01-30T10:25:00Z"},
+    {
+    "categoryId": 6,
+    "categoryCode": "TOYS",
+    "categoryName": "Toys & Games",
+    "description": "Toys, games, and puzzles for children of all ages.",
+    "createdAt": "2023-06-22T10:50:00Z",
+    "updatedAt": "2024-06-10T11:55:00Z"
+    }
+]

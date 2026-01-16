@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { getCategories } from "../../APIServices/jsonDataCall";
+import React, { useState, useEffect } from "react";
+import { getCustomers } from "../../APIServices/jsonDataCall";
 import { Tooltip } from "react-tooltip";
 import {
   PencilIcon,
@@ -14,42 +14,35 @@ import {
   notifyInfo,
 } from "../../NotificationService/notify.jsx";
 
-// import AddUpdateModalCategory from "./add-update-category.jsx";
+import AddUpdateModalCustomer from "./add-update-customer.jsx";
 
-export default function CategoryMasterList() {
-  const [categories, setCategories] = useState([]);
+export default function CustomerMasterList() {
+  const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
 
-  /* ---------------- FETCH CATEGORIES ---------------- */
+  /* ---------------- FETCH CUSTOMERS ---------------- */
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchCustomers = async () => {
       try {
-        const data = await getCategories();
-        setCategories(Array.isArray(data) ? data : []);
-      } catch (error) {
-        console.error(error);
-        notifyError("Failed to fetch categories.");
+        const data = await getCustomers();
+        setCustomers(data || []);
+      } catch {
+        notifyError("Failed to fetch customers.");
       }
     };
-
-    fetchCategories();
+    fetchCustomers();
   }, []);
 
-  /* ---------------- FILTER (MEMOIZED) ---------------- */
-  const filteredCategories = useMemo(() => {
-    return categories.filter((category) =>
-      (category.categoryName || "")
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-    );
-  }, [categories, searchTerm]);
+  /* ---------------- FILTER ---------------- */
+  const filteredCustomers = customers.filter((customer) =>
+    (customer.customerName || "")
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   /* ---------------- DATE FORMAT ---------------- */
   const formatDate = (dateString) => {
     if (!dateString) return "-";
-
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return "-";
 
@@ -60,44 +53,44 @@ export default function CategoryMasterList() {
     });
   };
 
-  /* ---------------- HANDLERS ---------------- */
+  /* ---------------- MODAL ---------------- */
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const handleAddClick = () => {
     setSelectedItem(null);
     setIsModalOpen(true);
   };
 
-  const handleEditClick = (category) => {
-    setSelectedItem(category);
+  const handleEditClick = (item) => {
+    setSelectedItem(item);
     setIsModalOpen(true);
   };
 
-  const handleDeleteClick = (category) => {
-    setCategories((prev) =>
-      prev.filter((c) => c.categoryId !== category.categoryId)
+  const handleDeleteClick = (item) => {
+    setCustomers((prev) =>
+      prev.filter((c) => c.customerId !== item.customerId)
     );
-    notifyInfo(`${category.categoryName || "Category"} deleted`);
+    notifyInfo(`${item.customerName} deleted`);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedItem(null);
-  };
+  const closeModal = () => setIsModalOpen(false);
 
-  const handleSave = (category) => {
-    setCategories((prev) => {
+  const handleSave = (newItem) => {
+    setCustomers((prev) => {
       const exists = prev.some(
-        (c) => c.categoryId === category.categoryId
+        (c) => c.customerId === newItem.customerId
       );
 
       return exists
         ? prev.map((c) =>
-            c.categoryId === category.categoryId ? category : c
+            c.customerId === newItem.customerId ? newItem : c
           )
-        : [...prev, category];
+        : [...prev, newItem];
     });
 
     notifySuccess(
-      `${category.categoryName || "Category"} saved successfully!`
+      `${newItem.customerName || "Customer"} saved successfully!`
     );
     closeModal();
   };
@@ -108,7 +101,7 @@ export default function CategoryMasterList() {
       {/* Header */}
       <div className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
         <h2 className="text-xl font-semibold text-green-800">
-          Category Master
+          Customer Master
         </h2>
 
         <div className="flex gap-2">
@@ -116,7 +109,7 @@ export default function CategoryMasterList() {
             <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
             <input
               className="w-64 rounded-lg border border-gray-300 px-10 py-2 text-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
-              placeholder="Search category..."
+              placeholder="Search customer..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -127,7 +120,7 @@ export default function CategoryMasterList() {
             onClick={handleAddClick}
           >
             <PlusCircleIcon className="h-5 w-5" />
-            <span>Add Category</span>
+            <span>Add Customer</span>
           </button>
         </div>
       </div>
@@ -137,66 +130,69 @@ export default function CategoryMasterList() {
         <table className="w-full text-sm table-auto">
           <thead className="sticky top-0 bg-green-700 z-10 text-white">
             <tr>
-              <th className="px-4 py-3 text-left">Category Code</th>
-              <th className="px-4 py-3  text-left">Category Name</th>
-              <th className="px-4 py-3  text-left">Created Date</th>
-              <th className="px-4 py-3 text-left">Last Updated</th>
+              <th className="px-4 py-3">Customer Code</th>
+              <th className="px-4 py-3">Customer Name</th>
+              <th className="px-4 py-3">Phone</th>
+              <th className="px-4 py-3">Email</th>
+              <th className="px-4 py-3">Customer Type</th>
+              <th className="px-4 py-3">Active</th>
+              <th className="px-4 py-3">Created Date</th>
+              <th className="px-4 py-3">Last Updated</th>
               <th className="px-4 py-3 text-right">Actions</th>
             </tr>
           </thead>
 
           <tbody>
-            {filteredCategories.length === 0 && (
-              <tr>
-                <td
-                  colSpan={5}
-                  className="px-4 py-6 text-center text-gray-500"
-                >
-                  No categories found
-                </td>
-              </tr>
-            )}
-
-            {filteredCategories.map((category, index) => {
-              const rowId = `${category.categoryId}-${index}`;
+            {filteredCustomers.map((customer, index) => {
+              const rowId = `${customer.customerId}-${index}`;
 
               return (
                 <tr
                   key={rowId}
                   className="hover:bg-green-100"
                 >
-                  <td className="px-4 py-3">
-                    {category.categoryCode || "-"}
-                  </td>
+                  <td className="px-4 py-3">{customer.customerCode}</td>
                   <td className="px-4 py-3 font-medium">
-                    {category.categoryName}
+                    {customer.customerName}
+                  </td>
+                  <td className="px-4 py-3">{customer.phone}</td>
+                  <td className="px-4 py-3">{customer.email}</td>
+                  <td className="px-4 py-3">{customer.customerType}</td>
+                  <td className="px-4 py-3">
+                    {customer.isActive ? "Yes" : "No"}
                   </td>
                   <td className="px-4 py-3">
-                    {formatDate(category.createdAt)}
+                    {formatDate(customer.createdAt)}
                   </td>
                   <td className="px-4 py-3">
-                    {formatDate(category.updatedAt)}
+                    {formatDate(customer.updatedAt)}
                   </td>
 
                   <td className="px-4 py-3">
                     <div className="flex justify-end gap-2">
                       <button
                         id={`edit-${rowId}`}
-                        onClick={() => handleEditClick(category)}
+                        onClick={() => handleEditClick(customer)}
                         className="secondary-button p-2"
                       >
                         <PencilIcon className="h-4 w-4 text-white" />
                       </button>
-                      <Tooltip anchorId={`edit-${rowId}`} content="Edit" />
+                      <Tooltip
+                        anchorId={`edit-${rowId}`}
+                        content="Edit"
+                      />
 
                       <button
                         id={`delete-${rowId}`}
-                        onClick={() => handleDeleteClick(category)}
+                        onClick={() => handleDeleteClick(customer)}
                         className="clear-button p-2"
                       >
                         <TrashIcon className="h-4 w-4 text-white" />
                       </button>
-                      <Tooltip anchorId={`delete-${rowId}`} content="Delete" />
+                      <Tooltip
+                        anchorId={`delete-${rowId}`}
+                        content="Delete"
+                      />
                     </div>
                   </td>
                 </tr>
@@ -206,15 +202,12 @@ export default function CategoryMasterList() {
         </table>
       </div>
 
-      {/* Modal (when ready) */}
-      {/* 
-      <AddUpdateModalCategory
+      <AddUpdateModalCustomer
         isOpen={isModalOpen}
         onClose={closeModal}
         onSave={handleSave}
-        category={selectedItem}
-      /> 
-      */}
+        customer={selectedItem}
+      />
     </div>
   );
 }

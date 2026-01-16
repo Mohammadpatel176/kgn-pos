@@ -3,14 +3,20 @@ import itemData from "../Data/itemDetails.json";
 import ItemCard from "./item-card-pos";
 import CheckoutModal from "./checkout-popup";
 import { generateInvoice } from "./generateInvoice";
-import { notifySuccess, notifyError,notifyInfo,notifyWarning   } from "../NotificationService/notify";
+import {
+  notifySuccess,
+  notifyError,
+  notifyInfo,
+  notifyWarning,
+} from "../NotificationService/notify";
+
 function POSScreen() {
   const [items] = useState(itemData);
   const [cart, setCart] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [discountType, setDiscountType] = useState("amount"); // amount | percent
+  const [discountType, setDiscountType] = useState("amount");
   const [discountValue, setDiscountValue] = useState(0);
 
   const [formData, setFormData] = useState({
@@ -49,13 +55,12 @@ function POSScreen() {
           : p
       )
     );
-    notifySuccess(`${product.productName} quantity updated!`);
   };
 
-  const removeFromCart = (id) =>{
+  const removeFromCart = (id) => {
     setCart(cart.filter((p) => p.productid !== id));
     notifyInfo("Item removed from cart!");
-  }
+  };
 
   const subtotal = cart.reduce(
     (s, i) => s + i.productPrice * i.quantity,
@@ -88,10 +93,13 @@ function POSScreen() {
   };
 
   return (
-    <div className="flex w-full h-full bg-gray-100 overflow-hidden">
-      {/* LEFT */}
-      <div className="flex-1 p-6 overflow-y-auto">
-        <h1 className="text-3xl font-black text-green-700 mb-2">KGN MOTORS</h1>
+    <div className="grid grid-rows-[1fr_auto] md:grid-rows-1 md:grid-cols-[1fr_380px] h-screen bg-gray-100 overflow-hidden">
+      
+      {/* LEFT : PRODUCTS */}
+      <div className="p-4 md:p-6 overflow-y-auto">
+        <h1 className="text-2xl md:text-3xl font-black text-green-700 mb-2">
+          KGN MOTORS
+        </h1>
 
         <input
           className="w-full mb-4 px-4 py-2 border rounded-lg"
@@ -100,7 +108,7 @@ function POSScreen() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
           {filteredItems.map((item) => (
             <ItemCard
               key={item.productid}
@@ -113,13 +121,15 @@ function POSScreen() {
         </div>
       </div>
 
-      {/* RIGHT */}
-      <div className="w-[380px] bg-white shadow-xl flex flex-col">
+      {/* RIGHT : CART */}
+      <div className="grid grid-rows-[auto_1fr_auto] bg-white shadow-xl border-t md:border-t-0">
+        {/* Cart Header */}
         <div className="bg-green-700 text-white p-4 font-bold">
           CART ({cart.reduce((a, b) => a + b.quantity, 0)})
         </div>
 
-        <div className="flex-1 p-4 space-y-3 overflow-y-auto bg-gray-50">
+        {/* Cart Items */}
+        <div className="p-3 md:p-4 space-y-3 overflow-y-auto bg-gray-50">
           {cart.map((item) => (
             <div key={item.productid} className="bg-white p-3 rounded border">
               <div className="flex justify-between">
@@ -135,16 +145,12 @@ function POSScreen() {
               </div>
 
               <div className="flex justify-between mt-2 items-center">
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => updateQuantity(item.productid, -1)}
-                  >
+                <div className="flex gap-3 items-center">
+                  <button onClick={() => updateQuantity(item.productid, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button
-                    onClick={() => updateQuantity(item.productid, 1)}
-                  >
+                  <button onClick={() => updateQuantity(item.productid, 1)}>
                     +
                   </button>
                 </div>
@@ -156,8 +162,8 @@ function POSScreen() {
           ))}
         </div>
 
-        {/* TOTAL */}
-        <div className="p-4 border-t space-y-2">
+        {/* Cart Summary */}
+        <div className="p-4 border-t space-y-2 bg-white">
           <div className="flex justify-between">
             <span>Subtotal</span>
             <span>₹{subtotal.toFixed(2)}</span>

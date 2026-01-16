@@ -37,7 +37,10 @@ export default function Sidebar() {
         <MenuGroup open={open} icon={<FaCogs />} title="Master">
           <MenuLink to="/master/general">General Master</MenuLink>
           <MenuLink to="/master/other">Other Masters</MenuLink>
-          <MenuLink to="/master/itemMaster">Item Master List</MenuLink>
+          <MenuLink to="/master/categoryMaster">Category Master</MenuLink>
+          <MenuLink to="/master/itemMaster">Item Master</MenuLink>
+          <MenuLink to="/master/customerMaster">Customer Master</MenuLink>
+
         </MenuGroup>
 
         <MenuItem open={open} icon={<FaUserShield />} title="Administrator" />
