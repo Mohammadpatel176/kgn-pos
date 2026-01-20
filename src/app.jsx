@@ -9,6 +9,8 @@ import CustomerMasterList from "./Masters/CustomerMaster/customer-master-list";
 import CategoryMasterList from "./Masters/CategoryMaster/category-master-list";
 import SalesOrder from "./Sales/SalesOrder/sales-order";
 import SalesInvoice from "./Sales/SalesInvoice/sales-invoice";
+// Administrator Imports
+import MyProfile from "./Administrator/my-profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export function App() {
@@ -25,6 +27,7 @@ export function App() {
         <Route path="inventory/update" element={<InventoryUpdate />} />
         <Route path="master/customerMaster" element={<CustomerMasterList />} />
         <Route path="master/categoryMaster" element={<CategoryMasterList />} />
+        <Route path="administrator/myProfile" element={<MyProfile />} />
       </Route>
     </Routes>
     <ToastContainer />

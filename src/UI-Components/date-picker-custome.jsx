@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaPlus, FaTrash, FaFilePdf, FaFileExcel, FaSave, FaCalendarAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import moment from 'moment';
 
-export default function GreenDatePicker({ selectedDate, onDateChange }) {
+export default function GreenDatePicker({ selectedDate, onDateChange,lable }) {
   const [show, setShow] = useState(false);
   const [viewDate, setViewDate] = useState(moment());
   const [grid, setGrid] = useState([]);
@@ -21,7 +21,7 @@ export default function GreenDatePicker({ selectedDate, onDateChange }) {
 
   return (
     <div className="relative w-full" ref={calendarRef}>
-      <label className="text-xs font-bold text-gray-500 uppercase block mb-1">Delivery Date</label>
+      <label className="text-xs font-bold text-gray-500 uppercase block mb-1">{lable}</label>
       <div 
         onClick={() => setShow(!show)}
         className="flex items-center justify-between w-full border border-gray-300 rounded-lg p-2 bg-white cursor-pointer hover:border-green-500 transition-all focus-within:ring-2 focus-within:ring-green-200"

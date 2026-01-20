@@ -42,8 +42,10 @@ export default function Sidebar() {
           <MenuLink to="/master/customerMaster">Customer Master</MenuLink>
 
         </MenuGroup>
-
-        <MenuItem open={open} icon={<FaUserShield />} title="Administrator" />
+        <MenuGroup open={open} icon={<FaUserShield />} title="Administrator">
+          <MenuLink to="/administrator/users">User Management</MenuLink>
+          <MenuLink to="/administrator/myProfile">My Profile</MenuLink>
+        </MenuGroup>
 
         <MenuGroup open={open} icon={<FaShoppingCart />} title="Sales">
           <MenuLink to="/sales/order">Sales Order</MenuLink>

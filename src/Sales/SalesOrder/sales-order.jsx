@@ -170,7 +170,7 @@ export default function SalesOrder() {
                 </div>
 
                 <div>
-                    <GreenDatePicker selectedDate={deliveryDate} onDateChange={setDeliveryDate} />
+                    <GreenDatePicker selectedDate={deliveryDate} onDateChange={setDeliveryDate} lable={DeliveryDate} />
                 </div>
             </div>
             <div className='grid grid-cols-1'>
