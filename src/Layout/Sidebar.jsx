@@ -14,7 +14,7 @@ export default function Sidebar() {
     <aside
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
-      className={`bg-green-600 text-white h-full transition-all duration-300
+      className={`bg-green-600 text-white h-full transition-all duration-300  green-scrollbar
         ${open ? "w-64" : "w-16"}`}
     >
       {/* Logo */}
@@ -32,7 +32,7 @@ export default function Sidebar() {
       </div>
 
       {/* Menu */}
-      <nav className="mt-4 space-y-2">
+      <nav className="mt-4 space-y-2 overflow-y-auto h-full">
 
         <MenuGroup open={open} icon={<FaCogs />} title="Master">
           <MenuLink to="/master/general">General Master</MenuLink>
@@ -40,7 +40,7 @@ export default function Sidebar() {
           <MenuLink to="/master/categoryMaster">Category Master</MenuLink>
           <MenuLink to="/master/itemMaster">Item Master</MenuLink>
           <MenuLink to="/master/customerMaster">Customer Master</MenuLink>
-
+          <MenuLink to='/master/employeeMaster'>Employee Master</MenuLink>
         </MenuGroup>
         <MenuGroup open={open} icon={<FaUserShield />} title="Administrator">
           <MenuLink to="/administrator/users">User Management</MenuLink>

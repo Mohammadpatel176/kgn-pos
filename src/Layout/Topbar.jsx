@@ -4,7 +4,7 @@ export default function Topbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="h-14 bg-green-700 border-b flex justify-between items-center px-6">
+    <header className="h-14 bg-green-700 flex justify-between items-center px-6">
       {/* Left */}
       <h1 className="text-lg font-semibold text-gray-800">
         Dashboard

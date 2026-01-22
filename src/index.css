@@ -27,3 +27,28 @@
 .main-table-header{
   @apply sticky top-0 bg-green-700 z-10 rounded text-white;
 }
+/* ===== Custom Green Scrollbar (Transparent Track) ===== */
+
+/* Chrome, Edge, Safari */
+.green-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.green-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent; /* ✅ transparent */
+}
+
+.green-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4ade80; /* green-400 */
+  border-radius: 8px;
+}
+
+.green-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #03752d; /* green-600 */
+}
+
+/* Firefox */
+.green-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #16a34a transparent;
+}

@@ -5,6 +5,7 @@ import POSScreen from "./POS/pos-screen";
 import PurchaseOrder from "./Purchase/purchase-order";
 import InventoryUpdate from "./Inventory/inventory-update";
 import ItemMasterList from "./Masters/ItemMaster/ItemMasterList";
+import EmployeeMaster from "./Masters/EmployeeMaster/employee-master";
 import CustomerMasterList from "./Masters/CustomerMaster/customer-master-list";
 import CategoryMasterList from "./Masters/CategoryMaster/category-master-list";
 import SalesOrder from "./Sales/SalesOrder/sales-order";
@@ -26,6 +27,7 @@ export function App() {
         <Route path="purchase/order" element={<PurchaseOrder/>} />
         <Route path="inventory/update" element={<InventoryUpdate />} />
         <Route path="master/customerMaster" element={<CustomerMasterList />} />
+        <Route path="master/employeeMaster" element={<EmployeeMaster/>} />
         <Route path="master/categoryMaster" element={<CategoryMasterList />} />
         <Route path="administrator/myProfile" element={<MyProfile />} />
       </Route>
